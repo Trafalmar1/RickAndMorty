@@ -26,7 +26,6 @@ const CharacterModal: FC = () => {
   const char = character.results?.find((ch) => ch.id === parseInt(id));
 
   useEffect(() => {
-    console.log(character.results);
     if (character.results == null) {
       dispatch(getCharacter(id));
     }

@@ -52,3 +52,9 @@ a {
 ::selection {
   background: #ff999d;
 }
+
+@media all and (max-width: 760px) {
+  html {
+    font-size: 50%;
+  }
+}

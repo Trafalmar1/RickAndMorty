@@ -12,6 +12,11 @@ const StyledInput = styled.input<{ color?: CSSProp; margin?: CSSProp }>`
   padding: 0.4em 0.7em;
   line-height: normal;
   font-family: "Baloo Paaji 2";
+
+  @media (max-width: 650px) {
+    font-size: 3rem;
+    width: 100%;
+  }
 `;
 
 export { StyledInput };

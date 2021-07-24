@@ -42,13 +42,13 @@ const CharacterCard: FC<CharacterCardProps> = ({
         </InfoBlock>
 
         <InfoBlock>
-          <Title>Type:</Title>
-          <InfoText>{type ? type : "unknown"}</InfoText>
+          <Title>Status:</Title>
+          <InfoText>{status}</InfoText>
         </InfoBlock>
 
         <InfoBlock>
-          <Title>Status:</Title>
-          <InfoText>{status}</InfoText>
+          <Title>Type:</Title>
+          <InfoText>{type ? type.trim() : "unknown"}</InfoText>
         </InfoBlock>
       </InfoSection>
     </CardContainer>

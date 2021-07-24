@@ -79,15 +79,15 @@ const Characters: FC = () => {
             />
             <Button name={"Filter"} isSubmit />
           </Form>
-          <PaginatorWrapper>
-            <Paginator
-              onPrev={prevButtonHandler}
-              onNext={nextButtonHandler}
-              current={currentPage}
-            />
-          </PaginatorWrapper>
         </StickyContainer>
       </Aside>
+      <PaginatorWrapper>
+        <Paginator
+          onPrev={prevButtonHandler}
+          onNext={nextButtonHandler}
+          current={currentPage}
+        />
+      </PaginatorWrapper>
     </Container>
   );
 };

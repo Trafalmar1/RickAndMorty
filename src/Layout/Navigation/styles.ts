@@ -19,6 +19,19 @@ const StyledNav = styled.nav`
       justify-content: center;
     }
   }
+
+  @media (max-width: 650px) {
+    & ul {
+      flex-direction: column;
+
+      & li:not(:last-child) {
+        margin-bottom: 4rem;
+      }
+      a {
+        font-size: 3rem;
+      }
+    }
+  }
 `;
 
 export { StyledNav };

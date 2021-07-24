@@ -26,6 +26,11 @@ const SButton = styled.button`
   font-size: 2rem;
   font-weight: 500;
   font-family: "Baloo Paaji 2";
+
+  @media (max-width: 650px) {
+    font-size: 3rem;
+    width: 70%;
+  }
 `;
 
 export { SButton };

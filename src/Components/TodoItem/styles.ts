@@ -18,6 +18,9 @@ const Container = styled.div`
   :not(:last-child) {
     margin-bottom: 3em;
   }
+  @media (max-width: 650px) {
+    padding: 2.5rem 2rem;
+  }
 `;
 
 const CheckBox = styled.input`
@@ -35,12 +38,15 @@ const Label = styled.label`
   display: block;
   text-overflow: ellipsis;
   flex: 1;
+  @media (max-width: 650px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const RemoveButton = styled.a`
   position: relative;
-  width: 3.2em;
-  height: 3.2em;
+  width: 5em;
+  height: 5em;
   opacity: 0.3;
 
   margin-left: 2em;
@@ -50,8 +56,8 @@ const RemoveButton = styled.a`
     position: absolute;
     left: 1.5em;
     content: " ";
-    height: 3.3em;
-    width: 0.2em;
+    height: 5em;
+    width: 0.4em;
     background-color: #333;
   }
 
@@ -66,27 +72,41 @@ const RemoveButton = styled.a`
   :hover {
     opacity: 1;
   }
+  @media (max-width: 650px) {
+    margin-left: 4em;
+    :before,
+    :after {
+      height: 5em;
+      width: 0.3em;
+    }
+  }
 `;
 
 const CheckMark = styled.span`
   position: relative;
-  height: 3.5em;
-  width: 3.5em;
+  height: 5em;
+  width: 5em;
   margin-right: 2em;
   background-color: #eee;
   :after {
     content: "";
     position: absolute;
     display: none;
-    left: 1.3em;
-    top: 0.8em;
-    width: 1em;
-    height: 1.6em;
+    left: 1.7em;
+    top: 0.6em;
+    width: 1.7em;
+    height: 3.1em;
     border: solid white;
-    border-width: 0 0.3em 0.3em 0;
+    border-width: 0 0.4em 0.4em 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+  @media (max-width: 650px) {
+    margin-right: 4em;
+    :after {
+      border-width: 0 0.5em 0.5em 0;
+    }
   }
 `;
 
@@ -95,8 +115,10 @@ const ClickableArea = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  :hover span {
-    background-color: #dfdfdf;
+  :hover span,
+  :hover span:after {
+    background-color: ${colors.active};
+    display: block;
   }
 
   & input:checked ~ span {

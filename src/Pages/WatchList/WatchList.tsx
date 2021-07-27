@@ -41,7 +41,7 @@ const WatchList = () => {
       </Form>
       <GridContainer>
         <TodoContainer>
-          <ColumnTitle>TOWATCH</ColumnTitle>
+          <ColumnTitle>TODO</ColumnTitle>
           {Object.keys(todoList)
             .reverse()
             .map((key: string) => (
@@ -54,8 +54,9 @@ const WatchList = () => {
               />
             ))}
         </TodoContainer>
+
         <DoneContainer>
-          <ColumnTitle>WATCHED</ColumnTitle>
+          <ColumnTitle>DONE</ColumnTitle>
           {Object.keys(doneList)
             .reverse()
             .map((key: string) => (

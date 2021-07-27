@@ -12,7 +12,7 @@ const CardContainer = styled.article`
   height: min-content;
 
   border-radius: 0.5rem;
-  padding: 5rem 4rem;
+  padding: 5rem 2rem;
 
   box-shadow: rgba(0, 0, 0, 0.7);
 
@@ -101,15 +101,15 @@ const InfoText = styled.p`
 
 const InfoSection = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: calc(50% - 1rem) calc(50% - 1rem);
   justify-content: space-between;
   letter-spacing: 0.1em;
   word-spacing: 0.7em;
-  row-gap: 1em;
-  grid-gap: 2em;
+  width: 100%;
+  row-gap: 2rem;
+  column-gap: 2rem;
   @media (max-width: 650px) {
     row-gap: 2em;
-    grid-gap: 4em;
   }
 `;
 

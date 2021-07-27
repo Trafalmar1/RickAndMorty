@@ -16,7 +16,6 @@ import {
   StickyContainer,
 } from "@pages/Characters/styles";
 
-import { TableWrapper } from "./styles";
 import EpisodesTable from "./EpisodesTable";
 
 const Episodes = () => {
@@ -24,7 +23,6 @@ const Episodes = () => {
     episodes,
     currentPage,
     formData,
-    scrollToRef,
     prevButtonHandler,
     nextButtonHandler,
     initialQuery,
@@ -40,9 +38,7 @@ const Episodes = () => {
     <Fragment>
       <Container>
         <Section>
-          <TableWrapper ref={scrollToRef}>
-            <EpisodesTable episodes={episodes} />
-          </TableWrapper>
+          <EpisodesTable episodes={episodes} />
         </Section>
         <Aside>
           <StickyContainer>

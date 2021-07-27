@@ -9,6 +9,9 @@ const STable = styled.table`
   table-layout: fixed;
   max-width: 100rem;
   min-width: 60rem;
+  @media (max-width: 650px) {
+    font-size: 2.2rem;
+  }
 `;
 
 export { STable };

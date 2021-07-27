@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import { Backdrop, ModalWrapper, StyledModal } from "./styles";
@@ -18,6 +18,13 @@ const Modal: FC<ModalProps> = ({ children }) => {
       history.push("/");
     }
   };
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
 
   return (
     <ModalWrapper>

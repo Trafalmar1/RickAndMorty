@@ -14,6 +14,10 @@ const CurrentPage = styled.p`
   width: max-content;
   height: min-content;
   line-height: 1;
+  margin: 0 4rem;
+  @media (max-width: 650px) {
+    font-size: 3rem;
+  }
 `;
 
 const ControlButton = styled.button`
@@ -33,6 +37,15 @@ const ControlButton = styled.button`
   :hover {
     border-color: ${colors.active};
     color: ${colors.active};
+  }
+  :focus {
+    color: inherit;
+    border-color: inherit;
+  }
+  @media (max-width: 650px) {
+    font-size: 3rem;
+    width: 8rem;
+    height: 8rem;
   }
 `;
 

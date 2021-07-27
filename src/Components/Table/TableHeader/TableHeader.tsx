@@ -7,6 +7,9 @@ const Header = styled.th<{ width?: CSSProp }>`
   font-weight: 500;
   padding: 1rem 3rem;
   width: ${(props) => (props.width ? props.width : "auto")};
+  @media (max-width: 650px) {
+    padding: 1rem 1rem;
+  }
 `;
 
 type TableHeaderProps = {

@@ -20,7 +20,7 @@ const Paginator: FC<PaginatorProps> = ({ onPrev, onNext, current }) => {
   return (
     <Container>
       <ControlButton onClick={prevButtonHandler}>{"<"}</ControlButton>
-      <CurrentPage>{`Page ${current}`}</CurrentPage>
+      <CurrentPage>{`${current}`}</CurrentPage>
       <ControlButton onClick={nextButtonHandler}>{">"}</ControlButton>
     </Container>
   );

@@ -13,7 +13,7 @@ import { RootState } from "@redux/store";
 import Modal from "../../../Components/Modal/Modal";
 import { useEffect } from "react";
 import { getCharacter } from "@actions/index";
-import { InfoWrapper } from "./styles";
+import { InfoWrapper, ProfileWrapper } from "./styles";
 
 type ParamsType = {
   id: string;
@@ -33,8 +33,10 @@ const CharacterModal: FC = () => {
 
   return (
     <Modal>
-      <Image alt={`${char?.name}`} src={char?.image} />
-      <Name>{char?.name}</Name>
+      <ProfileWrapper>
+        <Image alt={`${char?.name}`} src={char?.image} />
+        <Name>{char?.name}</Name>
+      </ProfileWrapper>
       <InfoWrapper>
         <InfoBlock>
           <Title>Gender</Title>

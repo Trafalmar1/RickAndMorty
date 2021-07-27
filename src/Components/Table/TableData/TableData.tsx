@@ -6,6 +6,9 @@ const Data = styled.td`
   text-align: left;
   padding: 1rem 3rem;
   color: ${colors.secondary};
+  @media (max-width: 650px) {
+    padding: 1rem 1rem;
+  }
 `;
 
 type TableDataProps = {

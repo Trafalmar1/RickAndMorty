@@ -27,6 +27,9 @@ const StyledNav = styled.nav`
       & li:not(:last-child) {
         margin-bottom: 4rem;
       }
+      & li {
+        margin-left: 0;
+      }
       a {
         font-size: 3rem;
       }

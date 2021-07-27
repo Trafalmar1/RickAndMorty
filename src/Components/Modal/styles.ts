@@ -6,9 +6,8 @@ const ModalWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-
-  height: 100vh;
   width: 100vw;
+  height: 100vw;
 `;
 
 const Backdrop = styled.div`
@@ -39,7 +38,9 @@ const StyledModal = styled.div`
 
   max-width: min-content;
 
-  height: 50rem;
+  @media (max-width: 650px) {
+    max-width: calc(100% - 4rem);
+  }
 
   background-color: ${colors.main};
   z-index: 2;

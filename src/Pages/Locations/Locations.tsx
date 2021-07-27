@@ -14,7 +14,6 @@ import {
   StickyContainer,
 } from "@pages/Characters/styles";
 
-import { TableWrapper } from "../Episodes/styles";
 import LocationsTable from "./LocationsTable";
 import useLocations from "./useLocations";
 
@@ -23,7 +22,6 @@ const Locations = () => {
     locations,
     currentPage,
     formData,
-    scrollToRef,
     prevButtonHandler,
     nextButtonHandler,
     initialQuery,
@@ -39,9 +37,7 @@ const Locations = () => {
     <Fragment>
       <Container>
         <Section>
-          <TableWrapper ref={scrollToRef}>
-            <LocationsTable locations={locations} />
-          </TableWrapper>
+          <LocationsTable locations={locations} />
         </Section>
         <Aside>
           <StickyContainer>

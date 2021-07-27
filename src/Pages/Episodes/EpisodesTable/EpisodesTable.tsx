@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 
 import { Episodes, Episode } from "@redux/reducers/Episodes";
 
+import TableWrapper from "@components/Table/TableWrapper";
 import Table from "@components/Table";
 import TableRow from "@components/Table/TableRow";
 import TableHeader from "@components/Table/TableHeader";
@@ -21,23 +22,25 @@ const EpisodeTable: FC<EpisodesTableProps> = ({ episodes }) => {
     }
   }, [episodes]);
   return (
-    <Table>
-      <TableRow>
-        <TableHeader width={"10rem"}>#</TableHeader>
-        <TableHeader>Name</TableHeader>
-        <TableHeader>Air date</TableHeader>
-      </TableRow>
+    <TableWrapper>
+      <Table>
+        <TableRow>
+          <TableHeader width={"10rem"}>#</TableHeader>
+          <TableHeader>Name</TableHeader>
+          <TableHeader>Air date</TableHeader>
+        </TableRow>
 
-      <Fragment>
-        {tableData?.map((d: Episode) => (
-          <TableRow key={d.id}>
-            <TableData>{d.id.toString()}</TableData>
-            <TableData>{d.name}</TableData>
-            <TableData>{d.air_date.toString()}</TableData>
-          </TableRow>
-        ))}
-      </Fragment>
-    </Table>
+        <Fragment>
+          {tableData?.map((d: Episode) => (
+            <TableRow key={d.id}>
+              <TableData>{d.id.toString()}</TableData>
+              <TableData>{d.name}</TableData>
+              <TableData>{d.air_date.toString()}</TableData>
+            </TableRow>
+          ))}
+        </Fragment>
+      </Table>
+    </TableWrapper>
   );
 };
 export default EpisodeTable;

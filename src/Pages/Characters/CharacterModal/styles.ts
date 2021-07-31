@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { size } from "@utils/screenSizes";
+
 const InfoWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -11,7 +13,7 @@ const InfoWrapper = styled.div`
   p {
     font-size: 1.5rem;
   }
-  @media (max-width: 650px) {
+  @media (max-width: ${size.mobile}) {
     h3 {
       font-size: 2.5rem;
     }
@@ -22,7 +24,7 @@ const InfoWrapper = styled.div`
 `;
 
 const ProfileWrapper = styled.div`
-  @media (min-width: 650px) {
+  @media (min-width: ${size.mobile}) {
     img {
       height: 15rem;
       width: 15rem;

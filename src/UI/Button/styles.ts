@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { darken } from "polished";
 
 import { colors } from "@utils/colors";
+import { size } from "@utils/screenSizes";
 
 const SButton = styled.button`
   display: block;
@@ -27,7 +28,7 @@ const SButton = styled.button`
   font-weight: 500;
   font-family: "Baloo Paaji 2";
 
-  @media (max-width: 650px) {
+  @media (max-width: ${size.mobile}) {
     font-size: 3rem;
     width: 70%;
   }

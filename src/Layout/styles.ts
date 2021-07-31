@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
+import { size } from "@utils/screenSizes";
+
 const Container = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
   grid-template-columns: auto 1fr auto;
   padding: 0 4rem;
-  @media (max-width: 560px) {
+  @media (max-width: ${size.mobile}) {
     padding: 0 1.5rem;
   }
 `;

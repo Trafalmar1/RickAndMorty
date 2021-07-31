@@ -21,7 +21,7 @@ const Navigation = () => {
           <NavButton to={ROUTES.locations}>Locations</NavButton>
         </li>
         <li>
-          <NavButton to={ROUTES.watchList}>My watch list</NavButton>
+          <NavButton to={ROUTES.watchList}>ToDo</NavButton>
         </li>
       </ul>
     </StyledNav>

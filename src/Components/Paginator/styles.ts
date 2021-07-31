@@ -1,4 +1,6 @@
 import styled from "styled-components";
+
+import { size } from "@utils/screenSizes";
 import { colors } from "@utils/colors";
 
 const Container = styled.div`
@@ -15,7 +17,7 @@ const CurrentPage = styled.p`
   height: min-content;
   line-height: 1;
   margin: 0 4rem;
-  @media (max-width: 650px) {
+  @media (max-width: ${size.mobile}) {
     font-size: 3rem;
   }
 `;
@@ -42,7 +44,7 @@ const ControlButton = styled.button`
     color: inherit;
     border-color: inherit;
   }
-  @media (max-width: 650px) {
+  @media (max-width: ${size.mobile}) {
     font-size: 3rem;
     width: 8rem;
     height: 8rem;

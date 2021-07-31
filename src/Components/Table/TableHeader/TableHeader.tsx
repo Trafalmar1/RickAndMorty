@@ -1,13 +1,15 @@
 import { FC } from "react";
 import styled, { CSSProp } from "styled-components";
 
+import { size } from "@utils/screenSizes";
+
 const Header = styled.th<{ width?: CSSProp }>`
   text-transform: uppercase;
   text-align: left;
   font-weight: 500;
   padding: 1rem 3rem;
   width: ${(props) => (props.width ? props.width : "auto")};
-  @media (max-width: 650px) {
+  @media (max-width: ${size.mobile}) {
     padding: 1rem 1rem;
   }
 `;

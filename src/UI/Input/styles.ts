@@ -1,5 +1,7 @@
 import styled, { CSSProp } from "styled-components";
 
+import { size } from "@utils/screenSizes";
+
 const StyledInput = styled.input<{ color?: CSSProp; margin?: CSSProp }>`
   display: block;
 
@@ -13,7 +15,7 @@ const StyledInput = styled.input<{ color?: CSSProp; margin?: CSSProp }>`
   line-height: normal;
   font-family: "Baloo Paaji 2";
 
-  @media (max-width: 650px) {
+  @media (max-width: ${size.mobile}) {
     font-size: 3rem;
     width: 100%;
   }

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { size } from "@utils/screenSizes";
+
 const StyledNav = styled.nav`
   display: flex;
   margin-top: 5rem;
@@ -13,6 +15,9 @@ const StyledNav = styled.nav`
     list-style: none;
     width: 100%;
     padding: 0 2rem;
+    @media (max-width: ${size.medium}) {
+      padding: 0;
+    }
     & li {
       margin-left: 4rem;
       display: flex;
@@ -20,7 +25,7 @@ const StyledNav = styled.nav`
     }
   }
 
-  @media (max-width: 650px) {
+  @media (max-width: ${size.mobile}) {
     & ul {
       flex-direction: column;
 

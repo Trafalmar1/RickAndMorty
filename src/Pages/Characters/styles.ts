@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { size } from "@utils/screenSizes";
+
 const PaginatorWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -15,7 +17,7 @@ const PaginatorWrapper = styled.div`
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 30rem;
-  @media (max-width: 650px) {
+  @media (max-width: ${size.medium}) {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, auto);
   }
@@ -32,7 +34,7 @@ const List = styled.div`
   a {
     width: auto;
   }
-  @media (max-width: 650px) {
+  @media (max-width: ${size.medium}) {
     flex-direction: column;
     align-items: center;
     a {
@@ -48,7 +50,7 @@ const Section = styled.section`
 `;
 
 const Aside = styled.aside`
-  @media (max-width: 650px) {
+  @media (max-width: ${size.medium}) {
     margin-bottom: 5rem;
     grid-row: 1/2;
   }

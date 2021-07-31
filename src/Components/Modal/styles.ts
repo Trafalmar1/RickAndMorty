@@ -38,7 +38,7 @@ const StyledModal = styled.div`
 
   max-width: min-content;
 
-  @media (max-width: 650px) {
+  @media (max-width: ) {
     max-width: calc(100% - 4rem);
   }
 

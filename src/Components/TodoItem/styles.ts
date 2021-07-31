@@ -1,5 +1,7 @@
-import { colors } from "@utils/colors";
 import styled from "styled-components";
+
+import { colors } from "@utils/colors";
+import { size } from "@utils/screenSizes";
 
 const Container = styled.div`
   display: flex;
@@ -18,7 +20,7 @@ const Container = styled.div`
   :not(:last-child) {
     margin-bottom: 3em;
   }
-  @media (max-width: 650px) {
+  @media (max-width: ${size.mobile}) {
     padding: 2.5rem 2rem;
   }
 `;
@@ -38,7 +40,7 @@ const Label = styled.label`
   display: block;
   text-overflow: ellipsis;
   flex: 1;
-  @media (max-width: 650px) {
+  @media (max-width: ${size.mobile}) {
     font-size: 2.5rem;
   }
 `;
@@ -72,7 +74,7 @@ const RemoveButton = styled.a`
   :hover {
     opacity: 1;
   }
-  @media (max-width: 650px) {
+  @media (max-width: ${size.mobile}) {
     margin-left: 4em;
     :before,
     :after {
@@ -102,7 +104,7 @@ const CheckMark = styled.span`
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
-  @media (max-width: 650px) {
+  @media (max-width: ${size.mobile}) {
     margin-right: 4em;
     :after {
       border-width: 0 0.5em 0.5em 0;

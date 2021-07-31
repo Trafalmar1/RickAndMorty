@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+import { size } from "@utils/screenSizes";
 import { colors } from "@utils/colors";
 
 const CardContainer = styled.article`
@@ -18,7 +19,7 @@ const CardContainer = styled.article`
 
   background-color: ${colors.main};
 
-  @media (max-width: 650px) {
+  @media (max-width: ${size.mobile}) {
     width: 100%;
     padding: 7rem 6rem;
   }
@@ -40,7 +41,7 @@ const Image = styled.img`
   box-shadow: 0 10px 50px ${colors.active};
 
   margin-bottom: 2em;
-  @media (max-width: 650px) {
+  @media (max-width: ${size.mobile}) {
     width: 14em;
     height: 14em;
     margin-bottom: 3em;
@@ -63,7 +64,7 @@ const Name = styled.h1`
   width: 100%;
 
   margin-bottom: 1em;
-  @media (max-width: 650px) {
+  @media (max-width: ${size.mobile}) {
     white-space: normal;
     font-size: 2.5em;
     display: block;
@@ -77,7 +78,7 @@ const Title = styled.h3`
   font-weight: bold;
   font-family: "Baloo Paaji 2", cursive;
   color: ${colors.active};
-  @media (max-width: 650px) {
+  @media (max-width: ${size.mobile}) {
     font-size: 2em;
   }
 `;
@@ -93,7 +94,7 @@ const InfoText = styled.p`
   width: 100%;
   text-align: center;
   font-family: "Baloo Paaji 2", cursive;
-  @media (max-width: 650px) {
+  @media (max-width: ${size.mobile}) {
     white-space: normal;
     font-size: 1.5em;
   }
@@ -108,7 +109,7 @@ const InfoSection = styled.div`
   width: 100%;
   row-gap: 2rem;
   column-gap: 2rem;
-  @media (max-width: 650px) {
+  @media (max-width: ${size.mobile}) {
     row-gap: 2em;
   }
 `;

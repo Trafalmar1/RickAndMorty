@@ -34,7 +34,7 @@ const List = styled.div`
   a {
     width: auto;
   }
-  @media (max-width: ${size.medium}) {
+  @media (max-width: ${size.mobile}) {
     flex-direction: column;
     align-items: center;
     a {

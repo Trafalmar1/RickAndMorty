@@ -25,8 +25,8 @@ const Container = styled.div`
 `;
 
 const Section = styled.section`
-  grid-column: content-start/content-end;
   position: relative;
+  grid-column: content-start/content-end;
   place-items: center;
   display: flex;
   flex-direction: column;
@@ -38,19 +38,21 @@ const Section = styled.section`
 const List = styled.div`
   position: relative;
   display: flex;
-  max-width: 110rem;
+  width: 100%;
+  max-width: 116rem;
   flex-wrap: wrap;
   justify-content: center;
-  grid-gap: 2rem;
+
   margin-bottom: 10rem;
   a {
+    margin: 1rem;
     width: auto;
   }
   @media (max-width: ${size.mobile}) {
     flex-direction: column;
     align-items: center;
     a {
-      width: 100%;
+      width: calc(100% - 2rem);
     }
   }
 `;

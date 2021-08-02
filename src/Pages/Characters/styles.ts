@@ -16,7 +16,7 @@ const PaginatorWrapper = styled.div`
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 1fr 30rem;
+  grid-template-columns: [main-start] auto [content-start] auto [content-end sidebar-start] 30rem [sidebar-end] auto [main-end];
   @media (max-width: ${size.medium}) {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, auto);
@@ -24,12 +24,24 @@ const Container = styled.div`
   min-height: calc(100vh - 20rem);
 `;
 
+const Section = styled.section`
+  grid-column: content-start/content-end;
+  position: relative;
+  place-items: center;
+  display: flex;
+  flex-direction: column;
+  @media (max-width: ${size.medium}) {
+    grid-column: 1/-1;
+  }
+`;
+
 const List = styled.div`
   position: relative;
   display: flex;
+  max-width: 110rem;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  grid-gap: 2rem;
   margin-bottom: 10rem;
   a {
     width: auto;
@@ -43,16 +55,12 @@ const List = styled.div`
   }
 `;
 
-const Section = styled.section`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-`;
-
 const Aside = styled.aside`
+  grid-column: sidebar-start/sidebar-end;
   @media (max-width: ${size.medium}) {
     margin-bottom: 5rem;
     grid-row: 1/2;
+    grid-column: 1/-1;
   }
 `;
 

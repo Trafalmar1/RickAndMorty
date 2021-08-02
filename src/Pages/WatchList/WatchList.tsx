@@ -46,7 +46,7 @@ const WatchList = () => {
             .reverse()
             .map((key: string) => (
               <TodoItem
-                key={key}
+                key={todoList[key].id}
                 id={todoList[key].id}
                 text={todoList[key].text}
                 onCheck={checkHandler}
@@ -61,7 +61,7 @@ const WatchList = () => {
             .reverse()
             .map((key: string) => (
               <TodoItem
-                key={key}
+                key={doneList[key].id}
                 id={doneList[key].id}
                 text={doneList[key].text}
                 isDone={doneList[key].isDone}

@@ -2,7 +2,7 @@ import API from "@api";
 import { Characters, Character } from "src/redux/reducers/Characters";
 import { AppDispatch } from "src/redux/store";
 
-import { GET_CHARACTERS } from "./actionTypes";
+import { GET_CHARACTERS, CHARACTER_LOADING } from "./actionTypes";
 
 const onSuccessFetching = (data: Characters) => {
   return {
@@ -11,37 +11,44 @@ const onSuccessFetching = (data: Characters) => {
       info: data.info,
       results: data.results,
       error: null,
+      loading: false,
     },
   };
 };
 
-const onFailure = (data: Characters) => {
+const onFailure = (error: string) => {
   return {
-    type: GET_CHARACTERS,
+    type: CHARACTER_LOADING,
     payload: {
-      info: null,
-      results: null,
-      error: data.error,
+      error,
+      loading: false,
+    },
+  };
+};
+
+const onLoading = () => {
+  return {
+    type: CHARACTER_LOADING,
+    payload: {
+      loading: true,
     },
   };
 };
 
 export const getCharacters =
-  (page: string | null) => async (dispatch: AppDispatch) => {
+  (params: string | null) => async (dispatch: AppDispatch) => {
     try {
-      if (page === null) {
-        dispatch(
-          onFailure({ info: null, results: null, error: "Page number is null" })
-        );
+      if (params === null) {
+        dispatch(onFailure("Params are null"));
         return;
       }
-      const data: Characters = await API.getCharacters(page);
-
-      dispatch(onSuccessFetching({ ...data, error: null }));
+      const data: Characters = await API.getCharacters(params);
+      dispatch(onLoading());
+      setTimeout(() => {
+        dispatch(onSuccessFetching({ ...data, error: null }));
+      }, 500);
     } catch {
-      dispatch(
-        onFailure({ info: null, results: null, error: "Something went wrong" })
-      );
+      dispatch(onFailure("Something went wrong"));
     }
   };
 
@@ -50,8 +57,6 @@ export const getCharacter = (id: string) => async (dispatch: AppDispatch) => {
     const data: Character = await API.getCharacter(id);
     dispatch(onSuccessFetching({ info: null, results: [data], error: null }));
   } catch {
-    dispatch(
-      onFailure({ info: null, results: null, error: "Something went wrong" })
-    );
+    dispatch(onFailure("Something went wrong"));
   }
 };

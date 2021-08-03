@@ -1,5 +1,8 @@
 import { AnyAction } from "redux";
-import { GET_CHARACTERS } from "@actions/Characters/actionTypes";
+import {
+  CHARACTER_LOADING,
+  GET_CHARACTERS,
+} from "@actions/Characters/actionTypes";
 
 type Info = {
   count: number;
@@ -37,27 +40,27 @@ export type Characters = {
   info: Info | null;
   results: Character[] | null;
   error: string | null;
+  loading?: boolean | null;
 };
 
 const initialState: Characters = {
   info: null,
   results: null,
   error: null,
+  loading: false,
 };
 
-const updateState = (
-  info: Info,
-  results: Character[],
-  error: string
-): Characters => {
-  return { info, results, error };
+const updateState = (state: Characters, payload: Characters): Characters => {
+  return { ...state, ...payload };
 };
 
 const characterReducer = (state = initialState, action: AnyAction) => {
   const { payload } = action;
   switch (action.type) {
     case GET_CHARACTERS:
-      return updateState(payload.info, payload.results, payload.error);
+      return updateState(state, payload);
+    case CHARACTER_LOADING:
+      return updateState(state, payload);
     default:
       return state;
   }

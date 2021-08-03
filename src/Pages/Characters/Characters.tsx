@@ -9,6 +9,7 @@ import Button from "@UI/Button";
 import { Link } from "@UI/NavButton/styles";
 import CharacterCard from "@components/CharacterCard";
 import { colors } from "@utils/colors";
+import CardSkeleton from "@components/CharacterCard/CardSkeleton";
 
 import {
   Aside,
@@ -19,6 +20,8 @@ import {
   StickyContainer,
 } from "./styles";
 
+const Skeleton = [...Array(9)].map((e, i) => <CardSkeleton key={i} />);
+
 const Characters: FC = () => {
   const {
     characters,
@@ -26,6 +29,7 @@ const Characters: FC = () => {
     formData,
     scrollToRef,
     location,
+    loading,
     prevButtonHandler,
     nextButtonHandler,
     initialQuery,
@@ -41,19 +45,20 @@ const Characters: FC = () => {
     <Container>
       <Section>
         <List ref={scrollToRef}>
-          {!!characters.results &&
-            characters.results.map((char) => (
-              <Link key={char.id} to={location.pathname + `/${char.id}`}>
-                <CharacterCard
-                  name={char.name}
-                  gender={char.gender}
-                  status={char.status}
-                  species={char.species}
-                  type={char.type}
-                  image={char.image}
-                />
-              </Link>
-            ))}
+          {!!characters.results && !loading
+            ? characters.results.map((char) => (
+                <Link key={char.id} to={location.pathname + `/${char.id}`}>
+                  <CharacterCard
+                    name={char.name}
+                    gender={char.gender}
+                    status={char.status}
+                    species={char.species}
+                    type={char.type}
+                    image={char.image}
+                  />
+                </Link>
+              ))
+            : Skeleton}
         </List>
       </Section>
       <Aside>

@@ -21,14 +21,7 @@ const CardContainer = styled.article`
 
   @media (max-width: ${size.mobile}) {
     width: 100%;
-    padding: 7rem 6rem;
-  }
-
-  @media (max-width: 560px) {
     font-size: 70%;
-  }
-  @media (max-width: 420px) {
-    font-size: 60%;
     padding: 4rem 3rem;
   }
 `;

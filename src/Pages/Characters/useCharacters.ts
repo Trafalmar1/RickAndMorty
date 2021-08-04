@@ -144,8 +144,6 @@ const useCharacters = () => {
     changed += searchParams.status === formData.status ? 0 : 1;
     changed += searchParams.species === formData.species ? 0 : 1;
 
-    console.log(changed);
-
     return changed !== 0;
   };
 
@@ -155,7 +153,6 @@ const useCharacters = () => {
     }
     let pathname = location.pathname;
     let searchParams = new URLSearchParams(location.search);
-    console.log(formData.species);
 
     updateParams(searchParams, "gender", formData.gender);
     updateParams(searchParams, "species", formData.species);

@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import { useWatchList } from "./useWatchList";
 import TodoItem from "@components/TodoItem";
@@ -12,6 +13,7 @@ import {
   Row,
   TodoContainer,
 } from "./styles";
+import "./transition.css";
 
 const WatchList = () => {
   const {
@@ -42,33 +44,40 @@ const WatchList = () => {
       <GridContainer>
         <TodoContainer>
           <ColumnTitle>TODO</ColumnTitle>
-          {Object.keys(todoList)
-            .reverse()
-            .map((key: string) => (
-              <TodoItem
-                key={todoList[key].id}
-                id={todoList[key].id}
-                text={todoList[key].text}
-                onCheck={checkHandler}
-                onRemove={removeHandler}
-              />
-            ))}
+          <TransitionGroup>
+            {Object.keys(todoList)
+              .reverse()
+              .map((key: string) => (
+                <CSSTransition key={key} timeout={200} classNames="item">
+                  <TodoItem
+                    id={todoList[key].id}
+                    text={todoList[key].text}
+                    onCheck={checkHandler}
+                    onRemove={removeHandler}
+                  />
+                </CSSTransition>
+              ))}
+          </TransitionGroup>
         </TodoContainer>
 
         <DoneContainer>
           <ColumnTitle>DONE</ColumnTitle>
-          {Object.keys(doneList)
-            .reverse()
-            .map((key: string) => (
-              <TodoItem
-                key={doneList[key].id}
-                id={doneList[key].id}
-                text={doneList[key].text}
-                isDone={doneList[key].isDone}
-                onCheck={uncheckHandler}
-                onRemove={removeHandler}
-              />
-            ))}
+          <TransitionGroup>
+            {Object.keys(doneList)
+              .reverse()
+              .map((key: string) => (
+                <CSSTransition key={key} timeout={200} classNames="item">
+                  <TodoItem
+                    key={doneList[key].id}
+                    id={doneList[key].id}
+                    text={doneList[key].text}
+                    isDone={doneList[key].isDone}
+                    onCheck={uncheckHandler}
+                    onRemove={removeHandler}
+                  />
+                </CSSTransition>
+              ))}
+          </TransitionGroup>
         </DoneContainer>
       </GridContainer>
     </Fragment>

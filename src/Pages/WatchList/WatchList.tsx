@@ -66,7 +66,7 @@ const WatchList = () => {
             {Object.keys(doneList)
               .reverse()
               .map((key: string) => (
-                <CSSTransition key={key} timeout={200} classNames="item">
+                <CSSTransition key={key} timeout={200} classNames="right">
                   <TodoItem
                     key={doneList[key].id}
                     id={doneList[key].id}

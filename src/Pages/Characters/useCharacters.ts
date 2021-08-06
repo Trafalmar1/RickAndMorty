@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useHistory } from "react-router-dom";
 import { RootState } from "@redux/store";
@@ -36,13 +36,31 @@ const useCharacters = () => {
     const params = "?" + url.split("?")[1];
     const search = new URLSearchParams(params);
     const pageNumber = search.get("page");
-    prevPage.current = currentPage;
-    setCurrentPage(pageNumber ? pageNumber : "1");
+
     return { params, pageNumber };
   };
 
+  useEffect(() => {
+    const search = new URLSearchParams(location.search);
+    const pageNumber = search.get("page");
+    if (pageNumber) {
+      setCurrentPage(pageNumber);
+    }
+  }, [location.search]);
+
+  useEffect(() => {
+    return () => {
+      prevPage.current = currentPage;
+    };
+  }, [currentPage]);
+
   const switchPage = (page: string) => {
-    const { params } = extractParamsFromURL(page);
+    const { params, pageNumber } = extractParamsFromURL(page);
+
+    if (pageNumber) {
+      prevPage.current = pageNumber;
+      setCurrentPage(pageNumber);
+    }
 
     history.replace({
       pathname: location.pathname,
@@ -65,46 +83,23 @@ const useCharacters = () => {
   };
 
   const extractFilteredData = useCallback(() => {
-    const params = new URLSearchParams(location.search);
     const gender = get("gender");
     const species = get("species");
     const status = get("status");
-    const page = params.get("page");
+
     setFormData({
       gender: gender ? gender : "",
       species: species ? species : "",
       status: status ? status : "",
     });
-    prevPage.current = page ? page : "1";
-    setCurrentPage(page ? page : "1");
-  }, [location.search, get]);
+  }, [get]);
 
-  const getCharacterData = useCallback(() => {
+  const run = useCallback(() => {
     if (!location.pathname.includes("characters/")) {
       dispatch(getCharacters(location.search));
       extractFilteredData();
     }
   }, [dispatch, extractFilteredData, location.pathname, location.search]);
-
-  const initialQuery = useCallback(() => {
-    if (prevPage.current !== currentPage) {
-      getCharacterData();
-      return;
-    }
-    if (characters.results?.length) {
-      const gender = get("gender");
-      const species = get("species");
-      const status = get("status");
-      setFormData({
-        gender: gender ? gender : "",
-        status: status ? status : "",
-        species: species ? species : "",
-      });
-      return;
-    }
-
-    getCharacterData();
-  }, [getCharacterData, get, characters.results, currentPage]);
 
   const updateParams = (
     searchParams: URLSearchParams,
@@ -121,36 +116,7 @@ const useCharacters = () => {
     return searchParams;
   };
 
-  const getSearchParams = () => {
-    let search = location.search;
-    const searchParams = new URLSearchParams(search);
-    return {
-      species: searchParams.get("species") || "",
-      status: searchParams.get("status") || "",
-      gender: searchParams.get("gender") || "",
-    };
-  };
-
-  const isFormChanged = () => {
-    const searchParams = getSearchParams();
-
-    let changed = 0;
-
-    changed += get("gender") === formData.gender ? 0 : 1;
-    changed += get("status") === formData.status ? 0 : 1;
-    changed += get("species") === formData.species ? 0 : 1;
-
-    changed += searchParams.gender === formData.gender ? 0 : 1;
-    changed += searchParams.status === formData.status ? 0 : 1;
-    changed += searchParams.species === formData.species ? 0 : 1;
-
-    return changed !== 0;
-  };
-
   const onSubmit = () => {
-    if (!isFormChanged()) {
-      return;
-    }
     let pathname = location.pathname;
     let searchParams = new URLSearchParams(location.search);
 
@@ -181,7 +147,7 @@ const useCharacters = () => {
     loading: characters.loading,
     prevButtonHandler,
     nextButtonHandler,
-    initialQuery,
+    run,
     onSubmit,
     onInputChange,
   };

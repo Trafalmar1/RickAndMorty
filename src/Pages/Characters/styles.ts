@@ -44,15 +44,16 @@ const List = styled.div`
   justify-content: center;
 
   margin-bottom: 10rem;
-  a {
+  article {
     margin: 1rem;
-    width: auto;
   }
   @media (max-width: ${size.mobile}) {
     flex-direction: column;
     align-items: center;
-    a {
-      width: calc(100% - 2rem);
+    article {
+      font-size: 1.5rem;
+      margin: 0;
+      margin: 1rem 0;
     }
   }
 `;

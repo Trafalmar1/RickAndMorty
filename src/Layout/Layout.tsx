@@ -16,6 +16,7 @@ const Layout = () => {
         </Section>
         <footer></footer>
       </Container>
+      <div id="sidebar"></div>
     </Fragment>
   );
 };

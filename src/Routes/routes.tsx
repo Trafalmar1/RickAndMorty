@@ -1,6 +1,6 @@
 export const ROUTES = {
-    characters:'characters',
-    episodes:'episodes',
-    locations:'locations',
-    watchList:'my-watch-list',
-}
+  characters: "characters",
+  episodes: "episodes",
+  locations: "locations",
+  todo: "TODO",
+};

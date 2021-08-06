@@ -1,39 +1,17 @@
 .item-enter {
-  transform: translateX(-15%);
   opacity: 0;
 }
 
 .item-enter-active {
   opacity: 1;
-  transform: translateY(0%);
-  transition: 200ms ease-in;
+  transition: all 1000ms linear;
 }
+
 .item-exit {
   opacity: 1;
 }
 
 .item-exit-active {
   opacity: 0;
-  transform: translateX(-15%);
-  transition: 200ms ease-in-out;
-}
-
-.right-enter {
-  transform: translateX(15%);
-  opacity: 0;
-}
-
-.right-enter-active {
-  opacity: 1;
-  transform: translateY(0%);
-  transition: 200ms ease-in;
-}
-.right-exit {
-  opacity: 1;
-}
-
-.right-exit-active {
-  opacity: 0;
-  transform: translateX(15%);
-  transition: 200ms ease-in-out;
+  transition: all 1000ms linear;
 }

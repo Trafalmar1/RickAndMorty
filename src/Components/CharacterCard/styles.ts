@@ -11,6 +11,7 @@ const CardContainer = styled.article`
 
   width: 35rem;
   height: min-content;
+  font-size: 2rem;
 
   border-radius: 0.5rem;
   padding: 5rem 2rem;
@@ -21,6 +22,7 @@ const CardContainer = styled.article`
 
   @media (max-width: ${size.mobile}) {
     width: 100%;
+    max-width: 400px;
     font-size: 70%;
     padding: 4rem 3rem;
   }

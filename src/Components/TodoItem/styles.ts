@@ -16,6 +16,7 @@ const Container = styled.div`
 
   padding: 1.8rem 1.5rem;
   border-radius: 0.5em;
+  overflow: hidden;
 
   :not(:last-child) {
     margin-bottom: 3em;

@@ -1,30 +1,44 @@
-import { ROUTES } from "@routes/routes";
 import NavButton from "@UI/NavButton";
+import Sidebar from "./Sidebar";
+import useSidebar from "./Sidebar/useSidebar";
+import { menuData, MenuItem } from "./MenuItemsData";
+import BurgerMenu from "./BurgerMenu";
+import { useWindowSize } from "@hooks/useWindowSize";
+
 import { StyledNav } from "./styles";
 
 const Navigation = () => {
+  const { visible, toggleSidebar } = useSidebar();
+  const { width } = useWindowSize();
+
+  if (width && width <= 650) {
+    return (
+      <>
+        <BurgerMenu onToggle={toggleSidebar} toggled={visible}>
+          <Sidebar
+            visible={visible}
+            links={menuData}
+            toggleSidebar={toggleSidebar}
+          />
+        </BurgerMenu>
+      </>
+    );
+  }
+
   return (
-    <StyledNav>
-      <ul>
-        <li>
-          <NavButton to={"/"} exact>
-            Home
-          </NavButton>
-        </li>
-        <li>
-          <NavButton to={ROUTES.characters}>Characters</NavButton>
-        </li>
-        <li>
-          <NavButton to={ROUTES.episodes}>Episodes</NavButton>
-        </li>
-        <li>
-          <NavButton to={ROUTES.locations}>Locations</NavButton>
-        </li>
-        <li>
-          <NavButton to={ROUTES.watchList}>ToDo</NavButton>
-        </li>
-      </ul>
-    </StyledNav>
+    <>
+      <StyledNav>
+        <ul>
+          {menuData.map((item: MenuItem) => (
+            <li key={"menu" + item.label}>
+              <NavButton to={item.path} exact>
+                {item.label}
+              </NavButton>
+            </li>
+          ))}
+        </ul>
+      </StyledNav>
+    </>
   );
 };
 

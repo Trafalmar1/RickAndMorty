@@ -6,7 +6,6 @@ import useCharacters from "./useCharacters";
 import Form from "@components/Form";
 import Input from "@UI/Input";
 import Button from "@UI/Button";
-import { Link } from "@UI/NavButton/styles";
 import CharacterCard from "@components/CharacterCard";
 import { colors } from "@utils/colors";
 import CardSkeleton from "@components/CharacterCard/CardSkeleton";
@@ -28,18 +27,17 @@ const Characters: FC = () => {
     currentPage,
     formData,
     scrollToRef,
-    location,
     loading,
     prevButtonHandler,
     nextButtonHandler,
-    initialQuery,
+    run,
     onSubmit,
     onInputChange,
   } = useCharacters();
 
   useEffect(() => {
-    initialQuery();
-  }, [initialQuery]);
+    run();
+  }, [run]);
 
   return (
     <Container>
@@ -47,16 +45,15 @@ const Characters: FC = () => {
         <List ref={scrollToRef}>
           {!!characters.results && !loading
             ? characters.results.map((char) => (
-                <Link key={char.id} to={location.pathname + `/${char.id}`}>
-                  <CharacterCard
-                    name={char.name}
-                    gender={char.gender}
-                    status={char.status}
-                    species={char.species}
-                    type={char.type}
-                    image={char.image}
-                  />
-                </Link>
+                <CharacterCard
+                  key={char.id}
+                  name={char.name}
+                  gender={char.gender}
+                  status={char.status}
+                  species={char.species}
+                  type={char.type}
+                  image={char.image}
+                />
               ))
             : Skeleton}
         </List>

@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import { Link } from "./styles";
 
-type LinkProps = {
+export type LinkProps = {
   children: string;
   to: string;
   exact?: boolean;

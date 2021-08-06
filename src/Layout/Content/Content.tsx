@@ -12,6 +12,7 @@ import CharacterModal from "@pages/Characters/CharacterModal";
 import { Fragment } from "react";
 
 import "./transition.css";
+import { ROUTES } from "@routes/routes";
 
 const Content: FC = () => {
   let location = useLocation();
@@ -27,16 +28,16 @@ const Content: FC = () => {
             <Route path="/" exact>
               <Home />
             </Route>
-            <Route path="/characters">
+            <Route path={"/" + ROUTES.characters}>
               <Characters />
             </Route>
-            <Route path="/episodes">
+            <Route path={"/" + ROUTES.episodes}>
               <Episodes />
             </Route>
-            <Route path="/locations">
+            <Route path={"/" + ROUTES.locations}>
               <Locations />
             </Route>
-            <Route path="/my-watch-list">
+            <Route path={"/" + ROUTES.todo}>
               <WatchList />
             </Route>
             <Route path="*">

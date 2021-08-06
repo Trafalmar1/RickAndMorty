@@ -19,7 +19,8 @@ const StyledNav = styled.nav`
       padding: 0;
     }
     & li {
-      margin-left: 4rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
       display: flex;
       justify-content: center;
     }
@@ -33,7 +34,7 @@ const StyledNav = styled.nav`
         margin-bottom: 4rem;
       }
       & li {
-        margin-left: 0;
+        margin: 0;
       }
       a {
         font-size: 3rem;

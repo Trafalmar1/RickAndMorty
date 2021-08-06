@@ -1,0 +1,32 @@
+.sidebar-appear-done {
+  display: block;
+}
+
+.sidebar-enter {
+  transform: translateX(-100%);
+  display: block !important;
+  width: 0px;
+}
+
+.sidebar-enter-active {
+  transform: translateX(0);
+  transition: 200ms ease-out;
+}
+
+.sidebar-enter-done {
+  display: block !important;
+}
+
+.sidebar-exit {
+  transform: translateX(0);
+  display: block !important;
+}
+
+.sidebar-exit-active {
+  transform: translateX(-100%);
+  transition: 100ms ease-in-out;
+}
+
+.sidebar-exit-done {
+  display: none;
+}

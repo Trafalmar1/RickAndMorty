@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import { useWatchList } from "./useWatchList";
 import TodoItem from "@components/TodoItem";
@@ -12,6 +12,7 @@ import {
   GridContainer,
   Row,
   TodoContainer,
+  GridWrapper,
 } from "./styles";
 import "./transition.css";
 
@@ -41,45 +42,47 @@ const WatchList = () => {
           <Button name="CREATE" isSubmit />
         </Row>
       </Form>
-      <GridContainer>
-        <TodoContainer>
-          <ColumnTitle>TODO</ColumnTitle>
-          <TransitionGroup>
-            {Object.keys(todoList)
-              .reverse()
-              .map((key: string) => (
-                <CSSTransition key={key} timeout={200} classNames="item">
-                  <TodoItem
-                    id={todoList[key].id}
-                    text={todoList[key].text}
-                    onCheck={checkHandler}
-                    onRemove={removeHandler}
-                  />
-                </CSSTransition>
-              ))}
-          </TransitionGroup>
-        </TodoContainer>
+      <GridWrapper>
+        <GridContainer>
+          <TodoContainer>
+            <ColumnTitle>TODO</ColumnTitle>
+            <TransitionGroup>
+              {Object.keys(todoList)
+                .reverse()
+                .map((key: string) => (
+                  <CSSTransition key={key} timeout={1000} classNames="item">
+                    <TodoItem
+                      id={todoList[key].id}
+                      text={todoList[key].text}
+                      onCheck={checkHandler}
+                      onRemove={removeHandler}
+                    />
+                  </CSSTransition>
+                ))}
+            </TransitionGroup>
+          </TodoContainer>
 
-        <DoneContainer>
-          <ColumnTitle>DONE</ColumnTitle>
-          <TransitionGroup>
-            {Object.keys(doneList)
-              .reverse()
-              .map((key: string) => (
-                <CSSTransition key={key} timeout={200} classNames="right">
-                  <TodoItem
-                    key={doneList[key].id}
-                    id={doneList[key].id}
-                    text={doneList[key].text}
-                    isDone={doneList[key].isDone}
-                    onCheck={uncheckHandler}
-                    onRemove={removeHandler}
-                  />
-                </CSSTransition>
-              ))}
-          </TransitionGroup>
-        </DoneContainer>
-      </GridContainer>
+          <DoneContainer>
+            <ColumnTitle>DONE</ColumnTitle>
+            <TransitionGroup>
+              {Object.keys(doneList)
+                .reverse()
+                .map((key: string) => (
+                  <CSSTransition key={key} timeout={1000} classNames="item">
+                    <TodoItem
+                      key={doneList[key].id}
+                      id={doneList[key].id}
+                      text={doneList[key].text}
+                      isDone={doneList[key].isDone}
+                      onCheck={uncheckHandler}
+                      onRemove={removeHandler}
+                    />
+                  </CSSTransition>
+                ))}
+            </TransitionGroup>
+          </DoneContainer>
+        </GridContainer>
+      </GridWrapper>
     </Fragment>
   );
 };

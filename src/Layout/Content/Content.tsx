@@ -19,11 +19,7 @@ const Content: FC = () => {
   return (
     <Fragment>
       <TransitionGroup>
-        <CSSTransition
-          key={location.key}
-          classNames="page"
-          timeout={{ enter: 300, exit: 300 }}
-        >
+        <CSSTransition key={location.key} classNames="page" timeout={300}>
           <Switch location={location}>
             <Route path="/" exact>
               <Home />

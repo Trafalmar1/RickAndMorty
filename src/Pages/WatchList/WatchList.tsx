@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import { useWatchList } from "./useWatchList";
@@ -13,6 +12,7 @@ import {
   Row,
   TodoContainer,
   GridWrapper,
+  Container,
 } from "./styles";
 import "./transition.css";
 
@@ -29,7 +29,7 @@ const WatchList = () => {
   } = useWatchList();
 
   return (
-    <Fragment>
+    <Container>
       <Form onSubmit={createNewTodo}>
         <Row>
           <Input
@@ -83,7 +83,7 @@ const WatchList = () => {
           </DoneContainer>
         </GridContainer>
       </GridWrapper>
-    </Fragment>
+    </Container>
   );
 };
 export default WatchList;

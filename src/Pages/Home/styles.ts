@@ -8,12 +8,12 @@ const Image = styled.img`
 `;
 
 const ImageWrapper = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   align-items: center;
   justify-content: center;
   z-index: -1;

@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 
 import Form from "@components/Form";
 import Input from "@UI/Input";
@@ -34,45 +34,43 @@ const Locations = () => {
   }, [initialQuery]);
 
   return (
-    <Fragment>
-      <Container>
-        <Section>
-          <LocationsTable locations={locations} />
-        </Section>
-        <Aside>
-          <StickyContainer>
-            <Form onSubmit={onSubmit}>
-              <Input
-                name={"name"}
-                value={formData.name}
-                onChange={onInputChange}
-                color={colors.active}
-              />
-              <Input
-                name={"type"}
-                value={formData.type}
-                onChange={onInputChange}
-                color={colors.active}
-              />
-              <Input
-                name={"dimension"}
-                value={formData.dimension}
-                onChange={onInputChange}
-                color={colors.active}
-              />
-              <Button name={"Filter"} isSubmit />
-            </Form>
-            <PaginatorWrapper>
-              <Paginator
-                onPrev={prevButtonHandler}
-                onNext={nextButtonHandler}
-                current={currentPage}
-              />
-            </PaginatorWrapper>
-          </StickyContainer>
-        </Aside>
-      </Container>
-    </Fragment>
+    <Container>
+      <Section>
+        <LocationsTable locations={locations} />
+      </Section>
+      <Aside>
+        <StickyContainer>
+          <Form onSubmit={onSubmit}>
+            <Input
+              name={"name"}
+              value={formData.name}
+              onChange={onInputChange}
+              color={colors.active}
+            />
+            <Input
+              name={"type"}
+              value={formData.type}
+              onChange={onInputChange}
+              color={colors.active}
+            />
+            <Input
+              name={"dimension"}
+              value={formData.dimension}
+              onChange={onInputChange}
+              color={colors.active}
+            />
+            <Button name={"Filter"} isSubmit />
+          </Form>
+          <PaginatorWrapper>
+            <Paginator
+              onPrev={prevButtonHandler}
+              onNext={nextButtonHandler}
+              current={currentPage}
+            />
+          </PaginatorWrapper>
+        </StickyContainer>
+      </Aside>
+    </Container>
   );
 };
 export default Locations;

@@ -18,6 +18,7 @@ const Header = styled.header`
 `;
 
 const Section = styled.section`
+  position: relative;
   grid-row: 2/-1;
   grid-column: 2/3;
   padding: 0 4rem;

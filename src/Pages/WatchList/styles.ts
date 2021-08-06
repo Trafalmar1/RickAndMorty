@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 import { size } from "@utils/screenSizes";
 
+const Container = styled.div`
+  display: grid;
+  grid-template-rows: 1fr auto;
+`;
+
 const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: auto minmax(300px, 1200px) auto;
@@ -63,4 +68,5 @@ export {
   Row,
   TodoContainer,
   GridWrapper,
+  Container,
 };

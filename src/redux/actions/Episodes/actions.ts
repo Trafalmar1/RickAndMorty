@@ -27,16 +27,15 @@ const onFailure = (data: Episodes) => {
 };
 
 export const getEpisodes =
-  (page: string | null) => async (dispatch: AppDispatch) => {
+  (params: string | null) => async (dispatch: AppDispatch) => {
     try {
-      if (page === null) {
+      if (params === null) {
         dispatch(
           onFailure({ info: null, results: null, error: "Page number is null" })
         );
         return;
       }
-      const data: Episodes = await API.getEpisodes(page);
-
+      const data: Episodes = await API.getEpisodes(params);
       dispatch(onSuccessFetching({ ...data, error: null }));
     } catch {
       dispatch(

@@ -43,10 +43,10 @@ export const getCharacters =
         return;
       }
       const data: Characters = await API.getCharacters(params);
-      dispatch(onLoading());
       setTimeout(() => {
+        dispatch(onLoading());
         dispatch(onSuccessFetching({ ...data, error: null }));
-      }, 500);
+      }, 300);
     } catch {
       dispatch(onFailure("Something went wrong"));
     }

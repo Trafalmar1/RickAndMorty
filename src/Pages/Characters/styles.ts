@@ -16,7 +16,7 @@ const PaginatorWrapper = styled.div`
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: [main-start] auto [content-start] auto [content-end sidebar-start] 30rem [sidebar-end] auto [main-end];
+  grid-template-columns: [main-start] auto [content-start] minmax(auto, 120rem) [content-end sidebar-start] 30rem [sidebar-end] auto [main-end];
   @media (max-width: ${size.medium}) {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, auto);

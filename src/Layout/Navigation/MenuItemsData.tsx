@@ -36,7 +36,7 @@ export const menuData: MenuItem[] = [
     icon: <LocationOn />,
   },
   {
-    label: "TODO",
+    label: "To-do",
     path: ROUTES.todo,
     icon: <PlaylistAddCheck />,
   },

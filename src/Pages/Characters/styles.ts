@@ -6,7 +6,7 @@ const PaginatorWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin: 3rem 0;
-  margin-top: 10rem;
+  margin: 5rem 0;
   bottom: 0;
   grid-column: 1/-1;
   @media (max-width: 600px) {
@@ -16,7 +16,7 @@ const PaginatorWrapper = styled.div`
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: [main-start] auto [content-start] minmax(auto, 120rem) [content-end sidebar-start] 30rem [sidebar-end] auto [main-end];
+  grid-template-columns: [main-start] auto [content-start] auto [content-end sidebar-start] 30rem [sidebar-end] auto [main-end];
   @media (max-width: ${size.medium}) {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, auto);
@@ -43,7 +43,6 @@ const List = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 
-  margin-bottom: 10rem;
   article {
     margin: 1rem;
   }

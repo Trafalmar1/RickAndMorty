@@ -1,11 +1,12 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useHistory } from "react-router-dom";
 import { RootState } from "@redux/store";
-import { useScroll } from "@hooks/useScroll";
 
 import { getEpisodes } from "@redux/actions";
+import { useScroll } from "@hooks/useScroll";
 import { useInput } from "@hooks/useInput";
+import usePaginator from "@components/Paginator/usePaginator";
 
 type EpisodeFormData = {
   name: string;
@@ -24,6 +25,13 @@ const useEpisodes = () => {
   const history = useHistory();
   const { scrollToRef, executeScroll } = useScroll();
   const { onInputChange } = useInput(formData, setFormData);
+  const { paginatorProps, disableNextButton, disablePrevButton } =
+    usePaginator();
+
+  useEffect(() => {
+    disablePrevButton(episodes.info?.prev);
+    disableNextButton(episodes.info?.next);
+  }, [episodes.info, disableNextButton, disablePrevButton]);
 
   const extractParamsFromURL = (url: string) => {
     const params = "?" + url.split("?")[1];
@@ -111,6 +119,7 @@ const useEpisodes = () => {
     formData,
     location,
     scrollToRef,
+    paginatorProps,
     prevButtonHandler,
     nextButtonHandler,
     initialQuery,

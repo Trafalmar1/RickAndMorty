@@ -7,7 +7,7 @@ const Header = styled.th<{ width?: CSSProp }>`
   text-transform: uppercase;
   text-align: left;
   font-weight: 500;
-  padding: 1rem 3rem;
+  padding: 1rem 1rem;
   width: ${(props) => (props.width ? props.width : "auto")};
   @media (max-width: ${size.mobile}) {
     padding: 1rem 1rem;

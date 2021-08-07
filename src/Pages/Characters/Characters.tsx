@@ -28,6 +28,7 @@ const Characters: FC = () => {
     formData,
     scrollToRef,
     loading,
+    paginatorProps,
     prevButtonHandler,
     nextButtonHandler,
     run,
@@ -87,6 +88,8 @@ const Characters: FC = () => {
         <Paginator
           onPrev={prevButtonHandler}
           onNext={nextButtonHandler}
+          hasPrev={paginatorProps.hasPrev}
+          hasNext={paginatorProps.hasNext}
           current={currentPage}
         />
       </PaginatorWrapper>

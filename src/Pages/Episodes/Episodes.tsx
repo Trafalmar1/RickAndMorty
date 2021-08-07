@@ -8,13 +8,8 @@ import Button from "@UI/Button";
 import Paginator from "@components/Paginator";
 import { colors } from "@utils/colors";
 
-import {
-  Aside,
-  Container,
-  PaginatorWrapper,
-  Section,
-  StickyContainer,
-} from "@pages/Characters/styles";
+import { PaginatorWrapper, StickyContainer } from "@pages/Characters/styles";
+import { Aside, Container, Section } from "./styles";
 
 import EpisodesTable from "./EpisodesTable";
 
@@ -23,6 +18,7 @@ const Episodes = () => {
     episodes,
     currentPage,
     formData,
+    paginatorProps,
     prevButtonHandler,
     nextButtonHandler,
     initialQuery,
@@ -54,6 +50,8 @@ const Episodes = () => {
             <Paginator
               onPrev={prevButtonHandler}
               onNext={nextButtonHandler}
+              hasNext={paginatorProps.hasNext}
+              hasPrev={paginatorProps.hasPrev}
               current={currentPage}
             />
           </PaginatorWrapper>

@@ -6,22 +6,41 @@ type PaginatorProps = {
   onNext: () => void;
   onPrev: () => void;
   current: string;
+  hasNext?: boolean;
+  hasPrev?: boolean;
 };
 
-const Paginator: FC<PaginatorProps> = ({ onPrev, onNext, current }) => {
-  const prevButtonHandler = () => {
+export type Pages = {
+  hasPrev?: boolean;
+  hasNext?: boolean;
+};
+
+const Paginator: FC<PaginatorProps> = ({
+  onPrev,
+  onNext,
+  current,
+  hasNext = true,
+  hasPrev = true,
+}) => {
+  const prevButtonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     onPrev();
   };
 
-  const nextButtonHandler = () => {
+  const nextButtonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     onNext();
   };
 
   return (
     <Container>
-      <ControlButton onClick={prevButtonHandler}>{"<"}</ControlButton>
+      <ControlButton disabled={!hasPrev} onClick={prevButtonHandler}>
+        {"<"}
+      </ControlButton>
       <CurrentPage>{`${current}`}</CurrentPage>
-      <ControlButton onClick={nextButtonHandler}>{">"}</ControlButton>
+      <ControlButton disabled={!hasNext} onClick={nextButtonHandler}>
+        {">"}
+      </ControlButton>
     </Container>
   );
 };

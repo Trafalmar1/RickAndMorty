@@ -6,13 +6,8 @@ import Button from "@UI/Button";
 import Paginator from "@components/Paginator";
 import { colors } from "@utils/colors";
 
-import {
-  Aside,
-  Container,
-  PaginatorWrapper,
-  Section,
-  StickyContainer,
-} from "@pages/Characters/styles";
+import { StickyContainer } from "@pages/Characters/styles";
+import { Container, Section, Aside, PaginatorWrapper } from "./styles";
 
 import LocationsTable from "./LocationsTable";
 import useLocations from "./useLocations";
@@ -22,6 +17,7 @@ const Locations = () => {
     locations,
     currentPage,
     formData,
+    paginatorProps,
     prevButtonHandler,
     nextButtonHandler,
     initialQuery,
@@ -65,6 +61,8 @@ const Locations = () => {
             <Paginator
               onPrev={prevButtonHandler}
               onNext={nextButtonHandler}
+              hasNext={paginatorProps.hasNext}
+              hasPrev={paginatorProps.hasPrev}
               current={currentPage}
             />
           </PaginatorWrapper>

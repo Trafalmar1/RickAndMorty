@@ -6,6 +6,7 @@
 
 html {
   font-size: 62.5%; /* 10px/16px */
+  overflow-y: scroll;
 }
 
 *,
@@ -24,7 +25,6 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  overflow-y: scroll;
 }
 
 .App {

@@ -7,6 +7,7 @@ import { useScroll } from "@hooks/useScroll";
 import { getCharacters } from "@redux/actions";
 import { useInput } from "@hooks/useInput";
 import { useLocalStorage } from "@hooks/useLocalStorage";
+import usePaginator from "@components/Paginator/usePaginator";
 
 type ChracterFormData = {
   species: string;
@@ -21,24 +22,24 @@ const initialFormData: ChracterFormData = {
 };
 
 const useCharacters = () => {
-  const characters = useSelector((state: RootState) => state.characterReducer);
+  const [formData, setFormData] = useState<ChracterFormData>(initialFormData);
   const [currentPage, setCurrentPage] = useState<string>("1");
   let prevPage = useRef<String>("1");
-  const [formData, setFormData] = useState<ChracterFormData>(initialFormData);
+
   const dispatch = useDispatch();
+  const characters = useSelector((state: RootState) => state.characterReducer);
+  const { scrollToRef, executeScroll } = useScroll();
   const location = useLocation();
   const history = useHistory();
-  const { scrollToRef, executeScroll } = useScroll();
   const { onInputChange } = useInput(formData, setFormData);
   const { saveString, get, remove } = useLocalStorage();
+  const { paginatorProps, disableNextButton, disablePrevButton } =
+    usePaginator();
 
-  const extractParamsFromURL = (url: string) => {
-    const params = "?" + url.split("?")[1];
-    const search = new URLSearchParams(params);
-    const pageNumber = search.get("page");
-
-    return { params, pageNumber };
-  };
+  useEffect(() => {
+    disablePrevButton(characters.info?.prev);
+    disableNextButton(characters.info?.next);
+  }, [characters.info, disableNextButton, disablePrevButton]);
 
   useEffect(() => {
     const search = new URLSearchParams(location.search);
@@ -53,6 +54,14 @@ const useCharacters = () => {
       prevPage.current = currentPage;
     };
   }, [currentPage]);
+
+  const extractParamsFromURL = (url: string) => {
+    const params = "?" + url.split("?")[1];
+    const search = new URLSearchParams(params);
+    const pageNumber = search.get("page");
+
+    return { params, pageNumber };
+  };
 
   const switchPage = (page: string) => {
     const { params, pageNumber } = extractParamsFromURL(page);
@@ -145,6 +154,7 @@ const useCharacters = () => {
     location,
     scrollToRef,
     loading: characters.loading,
+    paginatorProps,
     prevButtonHandler,
     nextButtonHandler,
     run,

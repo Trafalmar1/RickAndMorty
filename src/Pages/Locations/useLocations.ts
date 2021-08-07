@@ -1,9 +1,10 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useHistory } from "react-router-dom";
 import { RootState } from "@redux/store";
-import { useScroll } from "@hooks/useScroll";
 
+import { useScroll } from "@hooks/useScroll";
+import usePaginator from "@components/Paginator/usePaginator";
 import { getLocations } from "@redux/actions";
 
 type LocationFormData = {
@@ -26,6 +27,13 @@ const useLocations = () => {
   const location = useLocation();
   const history = useHistory();
   const { scrollToRef, executeScroll } = useScroll();
+  const { paginatorProps, disableNextButton, disablePrevButton } =
+    usePaginator();
+
+  useEffect(() => {
+    disablePrevButton(locations.info?.prev);
+    disableNextButton(locations.info?.next);
+  }, [locations.info, disableNextButton, disablePrevButton]);
 
   const extractParamsFromURL = (url: string) => {
     const params = "?" + url.split("?")[1];
@@ -126,6 +134,7 @@ const useLocations = () => {
     formData,
     location,
     scrollToRef,
+    paginatorProps,
     prevButtonHandler,
     nextButtonHandler,
     initialQuery,

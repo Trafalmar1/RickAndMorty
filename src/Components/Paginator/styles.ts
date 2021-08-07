@@ -35,14 +35,25 @@ const ControlButton = styled.button`
   font-weight: bold;
   padding: 1rem 2rem;
   cursor: pointer;
+  color: ${colors.main};
 
-  :hover {
+  :hover,
+  :active {
     border-color: ${colors.active};
     color: ${colors.active};
   }
+
   :focus {
-    color: inherit;
-    border-color: inherit;
+    outline: none;
+    box-shadow: none;
+  }
+
+  :disabled {
+    border-color: ${colors.secondary};
+    color: ${colors.secondary};
+    :hover {
+      cursor: auto;
+    }
   }
   @media (max-width: ${size.mobile}) {
     font-size: 3rem;

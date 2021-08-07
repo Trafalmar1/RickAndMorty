@@ -5,7 +5,7 @@ import { CSSTransition } from "react-transition-group";
 import { MenuItem } from "../MenuItemsData";
 import { Container, IconContainer, Link, Text } from "./styles";
 
-import "./transition.css";
+import "./transition.scss";
 
 type SidebarProps = {
   visible?: boolean;

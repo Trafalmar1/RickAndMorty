@@ -14,7 +14,7 @@ import {
   GridWrapper,
   Container,
 } from "./styles";
-import "./transition.css";
+import "./transition.scss";
 
 const WatchList = () => {
   const {

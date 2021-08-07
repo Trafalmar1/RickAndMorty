@@ -1,6 +1,5 @@
-.App {
-  text-align: center;
-}
+@import "./fonts.scss";
+@import "./scroll.scss";
 
 .App-logo {
   height: 40vmin;
@@ -11,10 +10,6 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-body {
-  overflow-y: scroll;
 }
 
 .App-header {
@@ -31,5 +26,3 @@ body {
 .App-link {
   color: #61dafb;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");

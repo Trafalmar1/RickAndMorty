@@ -11,7 +11,7 @@ import PageNotFound from "@pages/PageNotFound";
 import CharacterModal from "@pages/Characters/CharacterModal";
 import { Fragment } from "react";
 
-import "./transition.css";
+import "./transition.scss";
 import { ROUTES } from "@routes/routes";
 
 const Content: FC = () => {

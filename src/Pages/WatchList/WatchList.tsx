@@ -45,7 +45,7 @@ const WatchList = () => {
       <GridWrapper>
         <GridContainer>
           <TodoContainer>
-            <ColumnTitle>TODO</ColumnTitle>
+            <ColumnTitle>TO DO</ColumnTitle>
             <TransitionGroup>
               {Object.keys(todoList)
                 .reverse()

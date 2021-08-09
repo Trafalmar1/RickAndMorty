@@ -5,6 +5,9 @@ import TodoItem from "@components/TodoItem";
 import Input from "@UI/Input";
 import Button from "@UI/Button";
 import Form from "@components/Form";
+import { useWindowSize } from "@hooks/useWindowSize";
+import { size } from "@utils/screenSizes";
+
 import {
   ColumnTitle,
   DoneContainer,
@@ -28,13 +31,15 @@ const WatchList = () => {
     formData,
   } = useWatchList();
 
+  const { width } = useWindowSize();
+
   return (
     <Container>
       <Form onSubmit={createNewTodo}>
         <Row>
           <Input
             name={"text"}
-            margin={"0 0 2rem 0"}
+            margin={parseInt(size.mobile) > width ? "0 0 2rem 0" : "0 2rem 0 0"}
             placeholder={"New todo"}
             onChange={onInputChange}
             value={formData.text}

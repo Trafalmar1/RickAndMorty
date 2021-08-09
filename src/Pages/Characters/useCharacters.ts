@@ -78,14 +78,14 @@ const useCharacters = () => {
   const prevButtonHandler = () => {
     if (characters.info?.prev) {
       switchPage(characters.info?.prev);
-      executeScroll();
+      executeScroll(50);
     }
   };
 
   const nextButtonHandler = () => {
     if (characters.info?.next) {
       switchPage(characters.info?.next);
-      executeScroll();
+      executeScroll(50);
     }
   };
 

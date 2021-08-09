@@ -43,9 +43,9 @@ const Characters: FC = () => {
   }, [run]);
 
   return (
-    <Container>
+    <Container ref={scrollToRef}>
       <Section>
-        <List ref={scrollToRef}>
+        <List>
           {!!characters.results && !loading
             ? characters.results.map((char) => (
                 <CharacterCard

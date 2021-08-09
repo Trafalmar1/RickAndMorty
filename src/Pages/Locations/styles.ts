@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: [main-start] auto [content-start] 71rem [content-end sidebar-start] auto [sidebar-end] auto [main-end];
+  grid-template-columns: [main-start] auto [content-start] 70rem [content-end sidebar-start] auto [sidebar-end] auto [main-end];
   @media (max-width: 1100px) {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, min-content);
@@ -37,12 +37,10 @@ export const Section = styled.section`
 export const PaginatorWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin: 3rem 0;
-  margin-top: 10rem;
+  margin: 5rem 0;
   bottom: 0;
   grid-column: 1/-1;
   @media (max-width: 1100px) {
     grid-row: 3/-1;
-    margin-top: 2rem;
   }
 `;

@@ -6,11 +6,12 @@ import Button from "@UI/Button";
 import Paginator from "@components/Paginator";
 import { colors } from "@utils/colors";
 
-import { StickyContainer } from "@pages/Characters/styles";
-import { Container, Section, Aside, PaginatorWrapper } from "./styles";
-
 import LocationsTable from "./LocationsTable";
 import useLocations from "./useLocations";
+import { TYPES, DIMENSIONS } from "./LocationsData";
+
+import { StickyContainer } from "@pages/Characters/styles";
+import { Container, Section, Aside, PaginatorWrapper } from "./styles";
 
 const Locations = () => {
   const {
@@ -48,12 +49,15 @@ const Locations = () => {
               value={formData.type}
               onChange={onInputChange}
               color={colors.active}
+              options={TYPES}
             />
             <Input
               name={"dimension"}
               value={formData.dimension}
               onChange={onInputChange}
               color={colors.active}
+              options={DIMENSIONS}
+              margin={"0 0 6rem 0"}
             />
             <Button name={"Filter"} isSubmit />
           </Form>

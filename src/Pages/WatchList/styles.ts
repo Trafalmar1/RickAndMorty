@@ -5,6 +5,9 @@ import { size } from "@utils/screenSizes";
 const Container = styled.div`
   display: grid;
   grid-template-rows: 1fr auto;
+  @media (max-width: ${size.mobile}) {
+    padding-top: 2rem;
+  }
 `;
 
 const GridWrapper = styled.div`
@@ -51,6 +54,7 @@ const Row = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 5rem;
+
   @media (max-width: ${size.mobile}) {
     flex-direction: column;
     width: 100%;

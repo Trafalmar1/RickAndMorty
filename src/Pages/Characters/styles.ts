@@ -5,7 +5,6 @@ import { size } from "@utils/screenSizes";
 const PaginatorWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin: 3rem 0;
   margin: 5rem 0;
   bottom: 0;
   grid-column: 1/-1;
@@ -69,6 +68,10 @@ const Aside = styled.aside`
 const StickyContainer = styled.div`
   position: sticky;
   top: 5rem;
+  @media (max-width: ${size.medium}) {
+    position: relative;
+    top: auto;
+  }
 `;
 
 export { PaginatorWrapper, Container, Section, Aside, List, StickyContainer };

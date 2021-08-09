@@ -23,7 +23,7 @@ const Section = styled.section`
   grid-column: 2/3;
   padding: 0 4rem;
   @media (max-width: ${size.mobile}) {
-    padding: 0 1.5rem;
+    padding: 0 15px;
   }
 `;
 

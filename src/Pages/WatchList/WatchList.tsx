@@ -34,7 +34,7 @@ const WatchList = () => {
         <Row>
           <Input
             name={"text"}
-            margin={"0 2rem 0 0"}
+            margin={"0 0 2rem 0"}
             placeholder={"New todo"}
             onChange={onInputChange}
             value={formData.text}

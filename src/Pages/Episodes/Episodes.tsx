@@ -43,7 +43,9 @@ const Episodes = () => {
               value={formData.name}
               onChange={onInputChange}
               color={colors.active}
+              margin={"0 0 6rem 0"}
             />
+
             <Button name={"Filter"} isSubmit />
           </Form>
           <PaginatorWrapper>

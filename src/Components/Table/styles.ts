@@ -10,7 +10,7 @@ const STable = styled.table`
   table-layout: fixed;
   max-width: 100rem;
   @media (max-width: ${size.mobile}) {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
   }
 `;
 

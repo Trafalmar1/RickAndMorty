@@ -4,7 +4,7 @@ import { size } from "@utils/screenSizes";
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: [main-start] auto [content-start] 61rem [content-end sidebar-start] auto [sidebar-end] auto [main-end];
+  grid-template-columns: [main-start] auto [content-start] 60rem [content-end sidebar-start] auto [sidebar-end] auto [main-end];
 
   @media (max-width: ${size.medium}) {
     grid-template-columns: 1fr;

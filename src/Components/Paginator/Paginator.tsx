@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import { FC } from "react";
 
 import { Container, ControlButton, CurrentPage } from "./styles";
@@ -15,6 +17,16 @@ export type Pages = {
   hasNext?: boolean;
 };
 
+export type PageNumbers = {
+  prev: number;
+  next: number;
+};
+
+const initialPages = {
+  prev: 0,
+  next: 2,
+};
+
 const Paginator: FC<PaginatorProps> = ({
   onPrev,
   onNext,
@@ -22,6 +34,7 @@ const Paginator: FC<PaginatorProps> = ({
   hasNext = true,
   hasPrev = true,
 }) => {
+  const [pageNumbers, setPageNumber] = useState<PageNumbers>(initialPages);
   const prevButtonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     onPrev();
@@ -32,15 +45,29 @@ const Paginator: FC<PaginatorProps> = ({
     onNext();
   };
 
+  useEffect(() => {
+    const curNumber = parseInt(current);
+    if (!curNumber) return;
+    setPageNumber((state) => {
+      const prev = hasPrev ? curNumber - 1 : state.prev;
+      const next = hasNext ? curNumber + 1 : state.next;
+      return { prev, next };
+    });
+  }, [current, hasNext, hasPrev]);
+
   return (
     <Container>
-      <ControlButton disabled={!hasPrev} onClick={prevButtonHandler}>
-        {"<"}
-      </ControlButton>
+      {hasPrev && (
+        <ControlButton disabled={!hasPrev} onClick={prevButtonHandler}>
+          {pageNumbers.prev}
+        </ControlButton>
+      )}
       <CurrentPage>{`${current}`}</CurrentPage>
-      <ControlButton disabled={!hasNext} onClick={nextButtonHandler}>
-        {">"}
-      </ControlButton>
+      {hasNext && (
+        <ControlButton disabled={!hasNext} onClick={nextButtonHandler}>
+          {pageNumbers.next}
+        </ControlButton>
+      )}
     </Container>
   );
 };

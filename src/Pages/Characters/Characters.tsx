@@ -10,6 +10,8 @@ import CharacterCard from "@components/CharacterCard";
 import { colors } from "@utils/colors";
 import CardSkeleton from "@components/CharacterCard/CardSkeleton";
 
+import { SPECIES, STATUS, GENDERS } from "./CharacterData";
+
 import {
   Aside,
   Container,
@@ -66,6 +68,7 @@ const Characters: FC = () => {
               name={"species"}
               value={formData.species}
               onChange={onInputChange}
+              options={SPECIES}
               color={colors.active}
             />
             <Input
@@ -73,12 +76,15 @@ const Characters: FC = () => {
               value={formData.status}
               onChange={onInputChange}
               color={colors.active}
+              options={STATUS}
             />
             <Input
               name={"gender"}
               value={formData.gender}
               onChange={onInputChange}
               color={colors.active}
+              options={GENDERS}
+              margin={"0 0 6rem 0"}
             />
             <Button name={"Filter"} isSubmit />
           </Form>

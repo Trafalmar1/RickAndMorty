@@ -6,7 +6,6 @@ import { useScroll } from "@hooks/useScroll";
 
 import { getCharacters } from "@redux/actions";
 import { useInput } from "@hooks/useInput";
-import { useLocalStorage } from "@hooks/useLocalStorage";
 import usePaginator from "@components/Paginator/usePaginator";
 
 type ChracterFormData = {
@@ -32,7 +31,6 @@ const useCharacters = () => {
   const location = useLocation();
   const history = useHistory();
   const { onInputChange } = useInput(formData, setFormData);
-  const { saveString, get, remove } = useLocalStorage();
   const { paginatorProps, disableNextButton, disablePrevButton } =
     usePaginator();
 
@@ -91,37 +89,19 @@ const useCharacters = () => {
     }
   };
 
-  const extractFilteredData = useCallback(() => {
-    const gender = get("gender");
-    const species = get("species");
-    const status = get("status");
-
-    setFormData({
-      gender: gender ? gender : "",
-      species: species ? species : "",
-      status: status ? status : "",
-    });
-  }, [get]);
-
   const run = useCallback(() => {
     if (!location.pathname.includes("characters/")) {
       dispatch(getCharacters(location.search));
-      extractFilteredData();
     }
-  }, [dispatch, extractFilteredData, location.pathname, location.search]);
+  }, [dispatch, location.pathname, location.search]);
 
   const updateParams = (
     searchParams: URLSearchParams,
     name: string,
     data: string
   ) => {
-    if (data !== "") {
-      searchParams.set(name, data);
-      saveString(name, data);
-    } else {
-      remove(name);
-      searchParams.delete(name);
-    }
+    data !== "" ? searchParams.set(name, data) : searchParams.delete(name);
+
     return searchParams;
   };
 

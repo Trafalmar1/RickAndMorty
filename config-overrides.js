@@ -12,6 +12,7 @@ module.exports = function override(config) {
     "@UI": "src/UI",
     "@hooks": "src/Hooks",
     "@assets": "public/assets",
+    "@styles": "src/styles",
   })(config);
 
   return config;

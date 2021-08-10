@@ -48,6 +48,21 @@ const ControlButton = styled.button`
   :active {
     border-color: ${colors.active};
   }
+  transition: transform 0.2s;
+  :hover {
+    transform: translateY(-0.5rem);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 5px,
+      rgba(0, 0, 0, 0.1) 0px 7px 13px -5px,
+      rgba(0, 0, 0, 0.1) 0px -4px 0px inset;
+
+    transition: all 0.2s;
+  }
+
+  :active {
+    border-color: ${colors.active};
+    transform: translateY(0);
+    transition: transform 0.1s;
+  }
 
   :focus {
     outline: none;

@@ -11,7 +11,8 @@
       "@utils/*": ["./src/utils/*"],
       "@UI/*": ["./src/UI/*"],
       "@hooks/*": ["./src/Hooks/*"],
-      "@assets/*": ["./public/assets/*"]
+      "@assets/*": ["./public/assets/*"],
+      "@styles/*": ["./src/styles/*"]
     }
   }
 }

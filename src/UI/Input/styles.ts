@@ -25,14 +25,16 @@ const StyledInput = styled.input<{ color?: CSSProp }>`
   padding: 0.6em 0.7em;
   line-height: normal;
   font-family: "Baloo Paaji 2";
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 4px 0px inset;
   width: 100%;
   ::placeholder {
     color: rgba(0, 0, 0, 0.5);
   }
+  transition: box-shadow 0.3s;
   :focus {
     outline: none;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 4px 0px inset;
+    transition: box-shadow 0.3s;
     ::placeholder {
       color: rgba(0, 0, 0, 1);
     }
@@ -60,7 +62,6 @@ const Options = styled.div`
 
   @media (max-width: ${size.mobile}) {
     max-height: 25rem;
-    padding: 2rem;
     border: none;
   }
 

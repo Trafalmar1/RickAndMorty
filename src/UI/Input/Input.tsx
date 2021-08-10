@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useCallback } from "react";
 import { useRef } from "react";
 import { FC } from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import {
   StyledInput,
@@ -11,6 +12,8 @@ import {
   Option,
   OptionsContainer,
 } from "./styles";
+
+import "./transition.scss";
 
 type InputProps = {
   value: string;
@@ -114,22 +117,31 @@ const Input: FC<InputProps> = ({
         onFocus={focusHandler}
         onKeyPress={inputEnterPressHandler}
       />
-      {showOptions && filteredOptions().length > 0 && (
-        <Options>
-          <OptionsContainer>
-            {filteredOptions().map((o) => (
-              <Option
-                tabIndex={0}
-                key={name + o}
-                onKeyPress={(event: any) => selectEnterPressHandler(event, o)}
-                onClick={() => selectHandler(o)}
-              >
-                {o}
-              </Option>
-            ))}
-          </OptionsContainer>
-        </Options>
-      )}
+      <TransitionGroup>
+        {showOptions && filteredOptions().length > 0 && (
+          <CSSTransition
+            classNames="options"
+            timeout={{ enter: 300, exit: 200 }}
+          >
+            <Options>
+              <OptionsContainer>
+                {filteredOptions().map((option) => (
+                  <Option
+                    tabIndex={0}
+                    key={name + option}
+                    onKeyPress={(event: any) =>
+                      selectEnterPressHandler(event, option)
+                    }
+                    onClick={() => selectHandler(option)}
+                  >
+                    {option}
+                  </Option>
+                ))}
+              </OptionsContainer>
+            </Options>
+          </CSSTransition>
+        )}
+      </TransitionGroup>
     </InputWrapper>
   );
 };

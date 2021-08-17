@@ -134,6 +134,7 @@ const useCharacters = () => {
     location,
     scrollToRef,
     loading: characters.loading,
+    error: characters.error,
     paginatorProps,
     prevButtonHandler,
     nextButtonHandler,

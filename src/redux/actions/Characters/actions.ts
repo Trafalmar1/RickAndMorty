@@ -21,6 +21,7 @@ const onFailure = (error: string) => {
     type: CHARACTER_LOADING,
     payload: {
       error,
+      results: [],
       loading: false,
     },
   };
@@ -42,13 +43,14 @@ export const getCharacters =
         dispatch(onFailure("Params are null"));
         return;
       }
+
       const data: Characters = await API.getCharacters(params);
       setTimeout(() => {
         dispatch(onLoading());
         dispatch(onSuccessFetching({ ...data, error: null }));
       }, 300);
     } catch {
-      dispatch(onFailure("Something went wrong"));
+      dispatch(onFailure("There are no matches"));
     }
   };
 
@@ -57,6 +59,6 @@ export const getCharacter = (id: string) => async (dispatch: AppDispatch) => {
     const data: Character = await API.getCharacter(id);
     dispatch(onSuccessFetching({ info: null, results: [data], error: null }));
   } catch {
-    dispatch(onFailure("Something went wrong"));
+    dispatch(onFailure("There are no matches"));
   }
 };

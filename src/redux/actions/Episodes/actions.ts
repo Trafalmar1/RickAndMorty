@@ -20,7 +20,7 @@ const onFailure = (data: Episodes) => {
     type: GET_EPISODES,
     payload: {
       info: null,
-      results: null,
+      results: [],
       error: data.error,
     },
   };

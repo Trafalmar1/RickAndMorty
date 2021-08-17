@@ -20,7 +20,7 @@ const onFailure = (data: Locations) => {
     type: GET_LOCATIONS,
     payload: {
       info: null,
-      results: null,
+      results: [],
       error: data.error,
     },
   };

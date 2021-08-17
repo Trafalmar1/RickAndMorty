@@ -20,6 +20,7 @@ import {
   List,
   StickyContainer,
 } from "./styles";
+import PageTitle from "@UI/PageTitle";
 
 const Skeleton = [...Array(9)].map((e, i) => <CardSkeleton key={i} />);
 
@@ -31,6 +32,7 @@ const Characters: FC = () => {
     scrollToRef,
     loading,
     paginatorProps,
+    error,
     prevButtonHandler,
     nextButtonHandler,
     run,
@@ -60,6 +62,7 @@ const Characters: FC = () => {
               ))
             : Skeleton}
         </List>
+        {!!error && <PageTitle text={error} />}
       </Section>
       <Aside>
         <StickyContainer>
@@ -90,15 +93,17 @@ const Characters: FC = () => {
           </Form>
         </StickyContainer>
       </Aside>
-      <PaginatorWrapper>
-        <Paginator
-          onPrev={prevButtonHandler}
-          onNext={nextButtonHandler}
-          hasPrev={paginatorProps.hasPrev}
-          hasNext={paginatorProps.hasNext}
-          current={currentPage}
-        />
-      </PaginatorWrapper>
+      {!error && (
+        <PaginatorWrapper>
+          <Paginator
+            onPrev={prevButtonHandler}
+            onNext={nextButtonHandler}
+            hasPrev={paginatorProps.hasPrev}
+            hasNext={paginatorProps.hasNext}
+            current={currentPage}
+          />
+        </PaginatorWrapper>
+      )}
     </Container>
   );
 };

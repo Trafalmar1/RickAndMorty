@@ -1,7 +1,8 @@
 import { FC } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import {
   CardContainer,
-  Image,
+  ImageWrapper,
   InfoBlock,
   InfoSection,
   InfoText,
@@ -28,7 +29,14 @@ const CharacterCard: FC<CharacterCardProps> = ({
 }) => {
   return (
     <CardContainer>
-      <Image alt={`${name}`} src={image} />
+      <ImageWrapper>
+        <LazyLoadImage
+          height="100%"
+          alt={`${name}`}
+          effect="blur"
+          src={image}
+        />
+      </ImageWrapper>
       <Name>{name}</Name>
       <InfoSection>
         <InfoBlock>

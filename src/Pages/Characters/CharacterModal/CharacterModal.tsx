@@ -1,5 +1,4 @@
 import {
-  Image,
   InfoBlock,
   InfoText,
   Name,
@@ -34,7 +33,6 @@ const CharacterModal: FC = () => {
   return (
     <Modal>
       <ProfileWrapper>
-        <Image alt={`${char?.name}`} src={char?.image} />
         <Name>{char?.name}</Name>
       </ProfileWrapper>
       <InfoWrapper>

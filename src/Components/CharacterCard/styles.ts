@@ -28,10 +28,11 @@ const CardContainer = styled.article`
   }
 `;
 
-const Image = styled.img`
+const ImageWrapper = styled.div`
   width: 8em;
   height: 8em;
   border-radius: 50%;
+  overflow: hidden;
 
   box-shadow: 0 10px 50px ${colors.active};
 
@@ -117,4 +118,12 @@ const InfoBlock = styled.div`
   align-items: center;
 `;
 
-export { InfoBlock, InfoSection, InfoText, Title, Name, Image, CardContainer };
+export {
+  InfoBlock,
+  InfoSection,
+  InfoText,
+  Title,
+  Name,
+  ImageWrapper,
+  CardContainer,
+};

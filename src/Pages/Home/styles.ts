@@ -1,13 +1,6 @@
 import styled from "styled-components";
 
-const Image = styled.img`
-  display: block;
-  height: calc(50vw);
-  max-height: 50rem;
-  min-height: 45rem;
-`;
-
-const ImageWrapper = styled.div`
+const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -19,4 +12,10 @@ const ImageWrapper = styled.div`
   z-index: -1;
 `;
 
-export { Image, ImageWrapper };
+const ImageWrapper = styled.div`
+  height: 50vw;
+  max-height: 50rem;
+  min-height: 45rem;
+`;
+
+export { Container, ImageWrapper };

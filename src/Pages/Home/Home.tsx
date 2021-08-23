@@ -1,13 +1,22 @@
 import { Fragment } from "react";
 import MortyImage from "@assets/img/Morty.png";
-import { Image, ImageWrapper } from "./styles";
+import MortyLow from "@assets/img/Morty_low.jpg";
+import { Container, ImageWrapper } from "./styles";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Home = () => {
   return (
     <Fragment>
-      <ImageWrapper>
-        <Image src={MortyImage} />
-      </ImageWrapper>
+      <Container>
+        <ImageWrapper>
+          <LazyLoadImage
+            placeholderSrc={MortyLow}
+            height="100%"
+            src={MortyImage}
+            effect="blur"
+          />
+        </ImageWrapper>
+      </Container>
     </Fragment>
   );
 };
